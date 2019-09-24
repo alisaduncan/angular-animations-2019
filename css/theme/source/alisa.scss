@@ -1,0 +1,91 @@
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fbfbfb;
+$mainFont: 'Open Sans', sans-serif;
+$mainColor: #333;
+$headingFont: 'Quicksand', sans-serif;
+$headingColor: #204969;
+// $headingColor: #756c83;
+$headingLetterSpacing: -0.1em;
+$headingTextShadow: none;
+$linkColor: #3b759e;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+// Fix links so they are not cut off
+.reveal a {
+	line-height: 1.3em;
+}
+
+.reveal .slides section.present {
+	flex-direction: column;
+  align-items: center;
+
+  justify-content: flex-start;
+}
+
+.reveal pre code.hide {
+    display: none;
+}
+
+section .multi-column {
+ display: flex;
+ flex-direction: row;
+ align-items: flex-start;
+ justify-content: space-evenly;
+
+ &.instructions {
+   & > .step {
+    text-align: left;
+    flex: 33%;
+    align-items: start;
+    font-size: 80%;
+   }
+
+   & > .output {
+     flex: 67%;
+   }
+ }
+}
+
+.iframe-caption {
+  position: absolute;
+  width: 40%;
+  right: 0;
+  top: 300px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 20px;
+  font-size: 20px;
+  text-align: left;
+}
+
+
+// Background generator
+// @mixin bodyBackground() {
+// 	@include radial-gradient( #b9e1dc, #fbfbfb );
+// }
+
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
