@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
 	<head>
-		<meta charset="utf-8">
+    <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Digging in to Angular Animations</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/alisa.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -25,18 +25,428 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+				<section>
+            <h1>Digging in to Angular Animations</h1>
+            <h3>Alisa Duncan</h3>
+				</section>
+				<section>
+					<h2>Alisa Duncan</h2>
+					<h3>@AlisaDuncan</h3>
+					<ul>
+						<li>Software Architect</li>
+						<li>Co-organizer AngularKC</li>
+						<li>Program Director, ngGirlsKC</li>
+						<li>Navy brat and former chemist who enjoys drinking wine</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Why do we want animations?</h2>
+					<p class="fragment grow">Helps draw attention to elements</p>
+					<p class="fragment fade-in-then-semi-out">Makes applications feel more expressive and interactive</p>
+				</section>
+				<section>
+					<h2>The traditional way</h2>
+					<p class="fragment">Defined in CSS</p>
+					<p class="fragment">Use <code>AnimationEvent</code> on supported browsers</p>
+					<p class="fragment">Have to manage a lot yourself</p>
+				</section>
+        <section>
+          <h3>Why do it the Angular way?</h3>
+          <p class="fragment">First class citizen as a component and router property</p>
+          <p class="fragment">Can hook in to the router to define animations consistently across your app</p>
+          <p class="fragment">Can set up binding in the template as well as set up <code>HostBinding</code> in the component for more programmatic control</p>
+          <p class="fragment">Angular manages coordination and supports complex animation sequences</p>
+        </section>
+        <section>
+          <h3>State, Transitions, and Triggers</h3>
+          <p class="fragment">Define different styles based on state</p>
+          <p class="fragment">Define transitions between states</p>
+          <p class="fragment">Define when animations trigger</p>
+          <p class="fragment">Animations triggers emit a callback so you can use it emit an event</p>
+        </section>
+        <section>
+          <section>
+              <h3>Complex animations</h3>
+              <p class="fragment">Angular handles setup, teardown, and cleanup as it coordinates elements across the page</p>
+          </section>
+          <section>
+              <h3>Some helper methods</h3>
+              <p class="fragment"><code>stagger</code> animations to fire with a timing gap between multiple elements</p>
+              <p class="fragment"><code>group</code> animations to run in parallel</p>
+              <p class="fragment"><code>sequence</code> animation steps</p>
+              <p class="fragment">Define a set of animation styles using <code>keyframes</code></p>
+          </section>
+          <section>
+            <h2>Coordinating child element animations</h2>
+            <p class="fragment">Parent elements can explicitly control animation of child elements using <code>animateChild</code></p>
+            <p class="fragment">Apply multiple animation triggers on an element</p>
+          </section>
+        </section>
+				<section data-background-iframe="https://angularkc.github.io/tour-of-heroes-base/dashboard" data-background-interactive>
+					<div class="iframe-caption">
+						<h2>Angular Tour of Heroes</h2>
+						<p>Quick demo of the basic app. We'll apply animation concepts we cover to this app.</p>
+					</div>
+				</section>
+				<section data-state="code-snippet" data-code-snippet-name="component-animations">
+					<h2>Component Animations</h2>
+					<div class="multi-column instructions">
+            <div class="step">
+                <p class="fragment fade-in-then-semi-out" data-code-snippet="component-animations-1">Import the <code>BrowserAnimationsModule</code> to your app</p>
+                <p class="fragment" data-code-snippet="component-animations-2">Add the <code>animations</code> metadata property to the component</p>
+            </div>
+						<div class="output">
+								<pre><code class="hljs" data-trim data-line-numbers="1-2,5-7" data-code-snippet="component-animations-1">
+import { BrowserAnimationsModule } from
+'@angular/platform-browser/animations';
 
-		<script src="js/reveal.js"></script>
+@NgModule({
+  imports: [
+    BrowserAnimationsModule
+  ],
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule { }
+								</code></pre>
+								<pre><code class="hljs" data-trim data-line-numbers="5-7" data-code-snippet="component-animations-2">
+@Component({
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  animations: [
+  // animation triggers go here
+  ]
+})
+								</code></pre>
+							</div>
+					</div>
+				</section>
+				<section data-background-iframe="https://alisaduncan.github.io/toh-animations/dashboard" data-background-interactive>
+					<div class="iframe-caption">
+						<h2>Triggering styles changes on state</h2>
+						<p>The background color of the <strong>clear</strong> button for the Messages output at the bottom of the view changes based on state.</p>
+					</div>
+				</section>
+				<section data-state="code-snippet" data-code-snippet-name="trigger-state">
+          <h2>Trigger style changes on state</h2>
+          <div class="multi-column instructions">
+              <div class="step">
+                  <p class="fragment fade-in-then-semi-out" data-code-snippet="trigger-state-1">Define styles for states</p>
+                  <p class="fragment" data-code-snippet="trigger-state-2">Trigger animation by binding to template</p>
+              </div>
+              <div class="output">
+					      <pre><code class="hljs" data-trim data-code-snippet="trigger-state-1">
+animations: [
+  trigger('message-state', [
+    state('even-messages', style({
+      backgroundColor: '#fce38a' // green
+    })),
+    state('odd-messages', style({
+      backgroundColor: '#95e1d3' // yellow
+    }))
+  ])
+]
+					      </code></pre>
+					      <pre><code class="hljs" data-trim data-line-numbers="3" data-code-snippet="trigger-state-2">
+&lt;button
+  class="clear"
+  [@message-state]="messageService.messages.length % 2 ? 'even-messages' : 'odd-messages'"
+  (click)="messageService.clear()"&gt;clear
+&lt;/button&gt;
+                </code></pre>
+              </div>
+            </div>
+				</section>
+				<section data-background-iframe="https://alisaduncan.github.io/toh-animations/heroes-group" data-background-interactive>
+					<div class="iframe-caption">
+						<h2>Transitions and timings</h2>
+						<p>Animate elements entering the view by defining animations to fire based on transitions between states.</p>
+					</div>
+        </section>
+        <section>
+          <section>
+              <h2>Transitions and timings</h2>
+              <p class="fragment">Declare the transition for the beginning state and the ending state</p>
+              <p class="fragment">Looks something like this <code>transition('begin =&gt; end', ...)</code></p>
+              <p class="fragment">Define the animation using <code>animate('duration delay easing', ...)</code> method</p>
+          </section>
+          <section>
+              <h2>About those transition definitions...</h2>
+              <p class="fragment">Start and ends with <code>void</code> state</p>
+              <p class="fragment">Match all states with wildcard state <code>*</code></p>
+              <p class="fragment">Built in shortcuts for <code>:enter</code> and <code>:leave</code></p>
+              <p class="fragment">Built in helper for associating numeric values to transitions with <code>:increment</code> and <code>:decrement</code></p>
+              <p class="fragment">Can declare multiple transition matches</p>
+              <p class="fragment">Arrow can be bi-directional</p>
+          </section>
+        </section>
+				<section data-state="code-snippet" data-code-snippet-name="transitions-timings">
+          <h2>Using transitions and timings</h2>
+					<div class="multi-column instructions">
+            <div class="step">
+                <p class="fragment fade-in-then-semi-out" data-code-snippet="transitions-timings-1">Define animation</p>
+                <p class="fragment" data-code-snippet="transitions-timings-2">Trigger animation by binding to template</p>
+            </div>
+            <div class="output">
+              <pre><code class="hljs" data-trim data-code-snippet="transitions-timings-1">
+animations: [
+  trigger('animateIn', [
+    transition('void =&gt; *', [
+        style({transform: 'translateY(100%)'}),
+        animate('0.5s')
+    ])
+  ])
+]
+              </code></pre>
+              <pre><code class="hljs" data-trim data-line-numbers="2" data-code-snippet="transitions-timings-2">
+&lt;ul class="heroes"&gt;
+  &lt;li *ngFor="let hero of heroes" [@animateIn]&gt;
+    &lt;a routerLink="/detail/{{hero.id}}"&gt;
+      &lt;span class="badge"&gt;{{hero.id}}&lt;/span&gt; {{hero.name}}
+    &lt;/a&gt;
+    &lt;button class="delete" title="delete hero" (click)="delete(hero)"&gt;x&lt;/button&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+              </code></pre>
+            </div>
+          </div>
+				</section>
+				<section data-background-iframe="https://alisaduncan.github.io/toh-animations/heroes-stagger" data-background-interactive>
+					<div class="iframe-caption">
+						<h2>Stagger animation of each list item</h2>
+						<p>Angular supports complex animation of child elements natively. Here we change the animation of list to stagger on each list item.</p>
+					</div>
+				</section>
+				<section>
+          <h2>Fancy is easy</h2>
+					<p>
+            Stagger each element of the <code>*ngFor</code> easily with built in animation methods. Complex animations just got easier.
+          </p>
+          <pre class="fragment"><code class="hljs" data-trim>
+animations: [
+  trigger('animateIn', [
+    query(':enter', [
+      style({opacity: 0, transform: 'translateY(100%)'}),
+      stagger('0.5s', [
+        animate('0.5s', style({opacity: 1, transform: 'none'}))
+      ])
+    ], {optional: true})
+  ])
+]
+          </code></pre>
+				</section>
+				<section>
+          <h2>Conditional animation</h2>
+          <p>
+            Drive animation logic from component variables by defining state as a component property to conditionally animate.
+          </p>
+					<pre class="fragment"><code class="hljs" data-trim>
+&lt;li *ngFor="let hero of heroes" [@animateIn]="animateState"&gt;&lt;/li&gt;
+					</code></pre>
+					<pre class="fragment"><code class="hljs" data-trim data-line-numbers="2-3,7">
+animations: [
+  trigger('animateIn', [
+    transition('* =&gt; heroes-group', [
+      style({transform: 'translateY(100%)'}),
+      animate('0.5s')
+      ]),
+    transition('* =&gt; heroes-stagger', [
+      query(':enter', [
+        style({opacity: 0, transform: 'translateY(100%)'}),
+        stagger('0.5s', [
+          animate('0.5s', style({opacity: 1, transform: 'none'}))
+        ])
+      ], {optional: true})
+    ])
+  ])
+]
+					</code></pre>
+				</section>
+				<section>
+					<h2>Watching for animation events</h2>
+					<p>
+            React to events using the built in Animation callbacks. Watch for animation started and completed events by using <code>start</code> and <code>done</code> properties.
+          </p>
+					<pre class="fragment"><code class="hljs" data-trim data-line-numbers="1-2">
+&lt;ul class="heroes" *ngIf="heroes" [@animateIn]
+  (@animateIn.done)="animationComplete($event)"&gt;
+  &lt;li *ngFor="let hero of heroes"&gt;
+    &lt;a routerLink="/detail/{{hero.id}}"&gt;
+      &lt;span class="badge"&gt;{{hero.id}}&lt;/span&gt; {{hero.name}}
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+          </code></pre>
+        </section>
+        <section>
+          <h2>Route transition animations</h2>
+          <p class="fragment">Hooks in to the router to have animation between views of a route change</p>
+          <p class="fragment">Define animations for nested routes as well</p>
+          <p class="fragment">Extra fancy</p>
+        </section>
+        <section data-background-iframe="https://alisaduncan.github.io/toh-animations/dashboard" data-background-interactive>
+					<div class="iframe-caption">
+						<h2>Route animations</h2>
+						<p>Animations can be applied to routes as well to create a smooth transition between the different pages.</p>
+					</div>
+				</section>
+				<section data-state="code-snippet" data-code-snippet-name="route-animations">
+          <h2>Route animations</h2>
+          <div class="multi-column instructions">
+              <div class="step">
+                  <p class="fragment fade-in-then-semi-out" data-code-snippet="route-animations-1">Add animation data to the Routes definition</p>
+                  <p class="fragment fade-in-then-semi-out" data-code-snippet="route-animations-2">Define the animation. This is where you might need to use the data in a transition</p>
+                  <p class="fragment fade-in-then-semi-out" data-code-snippet="route-animations-3">Add the template bindings</p>
+                  <p class="fragment" data-code-snippet="route-animations-4">Update component with the router outlet to pull the animation data</p>
+                </div>
+                <div class="output">
+                  <pre><code class="hljs" data-trim data-line-numbers="3,5" data-code-snippet="route-animations-1">
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent, data: {routeAnimation: 'Dashboard'} },
+  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'heroes', component: HeroesComponent, data: {routeAnimation: 'Heroes'} }
+];
+                  </code></pre>
+                  <pre><code class="hljs" data-trim data-line-numbers="3,6" data-code-snippet="route-animations-2">
+animations: [
+  trigger('routeAnimation', [
+    transition('Dashboard =&gt; Heroes', [
+      query(':enter, :leave', [], { optional: true })
+    ]),
+    transition('Heros =&gt; Heroes', [
+      query(':enter, :leave', [], {optional: true})
+    ])
+  ])
+]
+                  </code></pre>
+                  <pre><code class="hljs" data-code-snippet="route-animations-3">
+&lt;div [@routeAnimation]="preparedRoute(outlet)"&gt;
+  &lt;router-outlet #outlet="outlet"&gt;&lt;/router-outlet&gt;
+&lt;/div&gt;
+                  </code></pre>
+                  <pre><code class="hljs" data-trim data-line-numbers="3,5" data-code-snippet="route-animations-4">
+public prepareRoute(outlet: RouterOutlet) {
+  return outlet && outlet.activatedRouteData && outlet.activatedRouteData.routeAnimation;
+}
+                  </code></pre>
+              </div>
+          </div>
+        </section>
+        <section>
+          <h2>Animate route sequences</h2>
+          <p class="fragment">Helpful if you have more than two route states</p>
+          <p class="fragment">Applicable to navigation lists </p>
+        </section>
+        <section data-state="code-snippet" data-code-snippet-name="route-sequence">
+          <h2>Animating route sequences</h2>
+          <div class="multi-column instructions">
+            <div class="step">
+              <p class="fragment fade-in-then-semi-out" data-code-snippet="route-sequence-1">Use a numeric value to represent navigation progression</p>
+              <p class="fragment" data-code-snippet="route-sequence-2">Utilize built in helpers <code>:increment</code> and <code>:decrement</code> to define transitions</p>
+            </div>
+            <div class="output">
+    					<pre><code class="hljs" data-trim data-line-numbers="3,5-6" data-code-snippet="route-sequence-1">
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent, data: {routeAnimation: 1} },
+  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'heroes-group', component: HeroesComponent, data: {routeAnimation: 2} }
+  { path: 'heroes-stagger', component: HeroesComponent, data: {routeAnimation: 3} }
+];
+    					</code></pre>
+    					<pre><code class="hljs" data-trim data-line-numbers="3,6" data-code-snippet="route-sequence-2">
+animations: [
+  trigger('routeAnimation', [
+    transition(':increment', [
+      query(':enter, :leave', [], { optional: true })
+    ]),
+    transition(':decrement', [
+      query(':enter, :leave', [], {optional: true})
+    ])
+  ])
+]
+    					</code></pre>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Reusing animations</h2>
+          <p class="fragment">Animations can be defined separately from component</p>
+          <p class="fragment">Reuse animations across multiple components</p>
+          <p class="fragment">Keep code modular</p>
+          <p class="fragment">Clean up component file</p>
+        </section>
+				<section data-state="code-snippet" data-code-snippet-name="reusable">
+					<h2>Make it reusable</h2>
+					<div class="multi-column instructions">
+            <div class="step">
+                <p class="fragment fade-in-then-semi-out" data-code-snippet="reusable-1">Define animation in separate file optionally using variables</p>
+                <p class="fragment" data-code-snippet="reusable-2">Consume in component using <code>useAnimation</code> method</p>
+            </div>
+            <div class="output">
+              <pre><code class="hljs" data-trim data-code-snippet="reusable-1">
+export const myAnimation = animation([
+  query(':enter', style({ transform: '{{ enterParam }}'})),
+  query(':leave', style({ transform: '{{ leaveParam }}'}))
+]);
+              </code></pre>
+              <pre><code class="hljs" data-trim data-line-numbers="4-9,12-17" data-code-snippet="reusable-2">
+animations: [
+  trigger('routeAnimation', [
+    transition(':increment', [
+      useAnimation(myAnimation, {
+        params: {
+          enterParam: 'translateX(-100%)',
+          leaveParam: 'translateX(200%)'
+        }
+      })
+    ]),
+    transition(':decrement', [
+      useAnimation(myAnimation, {
+        params: {
+          enterParam: 'translateX(200%)',
+          leaveParam: 'translateX(-100%)'
+        }
+      })
+    ])
+  ])
+]
+              </code></pre>
+            </div>
+          </div>
+				</section>
+				<section>
+					<h2>Testing tip</h2>
+          <p>Prevent animations from triggering while component DOM testing by importing the <code>NoopAnimationsModule</code> in the <code>TestBed</code>.</p>
+          <p>Happy testing!</p>
+				</section>
+				<section>
+          <h2>Want to learn more?</h2>
+            <p>Slides available at <a href="https://alisaduncan.github.io/animations-presentation/" target="_blank">alisaduncan.github.io/animations-presentation</a></p>
+					  <p>Animated Tour of Heroes App <a href="https://github.com/alisaduncan/toh-animations" target="_blank">https://github.com/alisaduncan/toh-animations</a></p>
+				</section>
+			</div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+    <script src="js/alisa.js"></script>
 
 		<script>
 			// More info about config & dependencies:
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				pdfSeparateFragments: false,
+				hash: true,
+				preloadIframes: false,
+        display: 'flex',
+        center: false,
+        width: '100%',
+        height: '100%',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
