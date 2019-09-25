@@ -1,17 +1,45 @@
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 .reveal a {
   line-height: 1.3em; }
 
 .reveal .slides section.present {
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; }
+  height: 80%; }
+  .reveal .slides section.present > h2 {
+    flex: 20%; }
+  .reveal .slides section.present > div.text-content {
+    flex: 80%; }
 
-.reveal pre code.hide {
-  display: none; }
+.reveal .slides section.present.title {
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.reveal .slides section.present.presenter {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%; }
+  .reveal .slides section.present.presenter > .heading {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .reveal .slides section.present.presenter > .heading > img {
+      border-radius: 50%;
+      margin: 0 0.5em;
+      width: 12%; }
+  .reveal .slides section.present.presenter > .about {
+    font-size: 80%; }
+  .reveal .slides section.present.presenter .social {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .reveal .slides section.present.presenter .social img {
+      width: 45%; }
 
 section .multi-column {
+  flex: 90%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -24,6 +52,9 @@ section .multi-column {
   section .multi-column.instructions > .output {
     flex: 67%; }
 
+.reveal pre code.hide {
+  display: none; }
+
 .iframe-caption {
   position: absolute;
   width: 40%;
@@ -35,19 +66,6 @@ section .multi-column {
   padding: 20px;
   font-size: 20px;
   text-align: left; }
-
-.contact {
-  background: pink;
-  position: absolute;
-  bottom: 5%;
-  left: 5%;
-  display: block;
-  width: 50%; }
-  .contact span {
-    font-family: 'Source Sans Pro', Helvetica, sans-serif;
-    color: #D3D3D3;
-    display: inline-block;
-    margin-right: 2.5%; }
 
 /*********************************************
  * GLOBAL STYLES
@@ -91,7 +109,7 @@ body {
   font-family: "Quicksand", sans-serif;
   font-weight: normal;
   line-height: 1.2;
-  letter-spacing: -0.1em;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
   text-shadow: none;
   word-wrap: break-word; }
@@ -188,13 +206,13 @@ body {
   margin: 20px auto;
   text-align: left;
   font-size: 0.55em;
-  font-family: monospace;
+  font-family: "Roboto Mono", monospace;
   line-height: 1.2em;
   word-wrap: break-word;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); }
 
 .reveal code {
-  font-family: monospace;
+  font-family: "Roboto Mono", monospace;
   text-transform: none; }
 
 .reveal pre code {

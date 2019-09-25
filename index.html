@@ -25,67 +25,93 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
-            <h1>Digging in to Angular Animations</h1>
-            <h3>Alisa Duncan</h3>
+				<section class="title" data-background="https://media.giphy.com/media/3HBV1vDi3g98IEFvxZ/giphy.gif">
+          <h1>Digging in to Angular Animations</h1>
+          <h4>Alisa Duncan</h4>
+				</section>
+				<section class="presenter">
+          <div class="heading">
+            <img class="plain" src="img/alisa-cropped.jpg" alt="Alisa Duncan">
+            <h2>Alisa Duncan</h2>
+          </div>
+          <div class="about">
+            <ul>
+              <li>Software Architect</li>
+              <li>Co-organizer AngularKC</li>
+              <li>Program Director, ngGirlsKC</li>
+              <li>Navy brat and former chemist who enjoys drinking wine</li>
+            </ul>
+          </div>
+          <div class="contact">
+              <h4>@AlisaDuncan</h4>
+              <div class="social">
+                <a href="https://twitter.com/AlisaDuncan"><img class="plain" src="img/twitter.png"></a>
+                <a href="https://github.com/alisaduncan"><img class="plain" src="img/github.png"></a>
+                <a href="https://dev.to/AlisaDuncan"><img class="plain" src="img/dev.png"></a>
+              </div>
+          </div>
 				</section>
 				<section>
-					<h2>Alisa Duncan</h2>
-					<h3>@AlisaDuncan</h3>
-					<ul>
-						<li>Software Architect</li>
-						<li>Co-organizer AngularKC</li>
-						<li>Program Director, ngGirlsKC</li>
-						<li>Navy brat and former chemist who enjoys drinking wine</li>
-					</ul>
-				</section>
-				<section>
-					<h2>Why do we want animations?</h2>
-					<p class="fragment grow">Helps draw attention to elements</p>
-					<p class="fragment fade-in-then-semi-out">Makes applications feel more expressive and interactive</p>
+          <h2>Why do we want animations?</h2>
+          <div class="text-content">
+              <p class="fragment grow">Helps draw attention to elements</p>
+              <p class="fragment fade-in-then-semi-out">Makes applications feel more expressive and interactive</p>
+          </div>
 				</section>
 				<section>
 					<h2>The traditional way</h2>
-					<p class="fragment">Defined in CSS</p>
-					<p class="fragment">Use <code>AnimationEvent</code> on supported browsers</p>
-					<p class="fragment">Have to manage a lot yourself</p>
+					<div class="text-content">
+            <p class="fragment">Defined in CSS</p>
+            <p class="fragment">Use <code>AnimationEvent</code> on supported browsers</p>
+            <p class="fragment">Have to manage a lot yourself</p>
+          </div>
 				</section>
         <section>
-          <h3>Why do it the Angular way?</h3>
-          <p class="fragment">First class citizen as a component and router property</p>
-          <p class="fragment">Can hook in to the router to define animations consistently across your app</p>
-          <p class="fragment">Can set up binding in the template as well as set up <code>HostBinding</code> in the component for more programmatic control</p>
-          <p class="fragment">Angular manages coordination and supports complex animation sequences</p>
+          <h2>Why do it the Angular way?</h2>
+          <div class="text-content">
+            <p class="fragment">First class citizen as a component and router property</p>
+            <p class="fragment">Can hook in to the router to define animations consistently across your app</p>
+            <p class="fragment">Can set up binding in the template as well as set up <code>HostBinding</code> in the component for more programmatic control</p>
+            <p class="fragment">Angular manages coordination and supports complex animation sequences</p>
+          </div>
         </section>
         <section>
-          <h3>State, Transitions, and Triggers</h3>
-          <p class="fragment">Define different styles based on state</p>
-          <p class="fragment">Define transitions between states</p>
-          <p class="fragment">Define when animations trigger</p>
-          <p class="fragment">Animations triggers emit a callback so you can use it emit an event</p>
+          <h2>State, Transitions, and Triggers</h2>
+          <div class="text-content">
+            <p class="fragment">Define different styles based on state</p>
+            <p class="fragment">Define transitions between states</p>
+            <p class="fragment">Define when animations trigger</p>
+            <p class="fragment">Animations triggers emit a callback so you can use it emit an event</p>
+          </div>
         </section>
         <section>
           <section>
-              <h3>Complex animations</h3>
+            <h2>Complex animations</h2>
+            <div class="text-content">
               <p class="fragment">Angular handles setup, teardown, and cleanup as it coordinates elements across the page</p>
+           </div>
           </section>
           <section>
-              <h3>Some helper methods</h3>
+            <h2>Some helper methods</h2>
+            <div class="text-content">
               <p class="fragment"><code>stagger</code> animations to fire with a timing gap between multiple elements</p>
               <p class="fragment"><code>group</code> animations to run in parallel</p>
               <p class="fragment"><code>sequence</code> animation steps</p>
               <p class="fragment">Define a set of animation styles using <code>keyframes</code></p>
+            </div>
           </section>
           <section>
             <h2>Coordinating child element animations</h2>
-            <p class="fragment">Parent elements can explicitly control animation of child elements using <code>animateChild</code></p>
-            <p class="fragment">Apply multiple animation triggers on an element</p>
+            <div class="text-content">
+              <p class="fragment">Parent elements can explicitly control animation of child elements using <code>animateChild</code></p>
+              <p class="fragment">Apply multiple animation triggers on an element</p>
+            </div>
           </section>
         </section>
 				<section data-background-iframe="https://angularkc.github.io/tour-of-heroes-base/dashboard" data-background-interactive>
 					<div class="iframe-caption">
 						<h2>Angular Tour of Heroes</h2>
-						<p>Quick demo of the basic app. We'll apply animation concepts we cover to this app.</p>
+						<p>Quick demo of the basic Tour of Heroes. We'll apply animation concepts we cover during the presentation to this app.</p>
 					</div>
 				</section>
 				<section data-state="code-snippet" data-code-snippet-name="component-animations">
@@ -168,19 +194,23 @@ animations: [
         </section>
         <section>
           <section>
-              <h2>Transitions and timings</h2>
+            <h2>Transitions and timings</h2>
+            <div class="text-content">
               <p class="fragment">Declare the transition for the beginning state and the ending state</p>
               <p class="fragment">Looks something like this <code>transition('begin =&gt; end', ...)</code></p>
               <p class="fragment">Define the animation using <code>animate('duration delay easing', ...)</code> method</p>
+            </div>
           </section>
           <section>
-              <h2>About those transition definitions...</h2>
+            <h2>About those transition definitions...</h2>
+            <div class="text-content">
               <p class="fragment">Start and ends with <code>void</code> state</p>
               <p class="fragment">Match all states with wildcard state <code>*</code></p>
               <p class="fragment">Built in shortcuts for <code>:enter</code> and <code>:leave</code></p>
               <p class="fragment">Built in helper for associating numeric values to transitions with <code>:increment</code> and <code>:decrement</code></p>
               <p class="fragment">Can declare multiple transition matches</p>
               <p class="fragment">Arrow can be bi-directional</p>
+            </div>
           </section>
         </section>
 				<section data-state="code-snippet" data-code-snippet-name="transitions-timings">
@@ -222,10 +252,11 @@ animations: [
 				</section>
 				<section>
           <h2>Fancy is easy</h2>
-					<p>
-            Stagger each element of the <code>*ngFor</code> easily with built in animation methods. Complex animations just got easier.
-          </p>
-          <pre class="fragment"><code class="hljs" data-trim>
+					<div class="text-content">
+            <p>
+              Stagger each element of the <code>*ngFor</code> easily with built in animation methods. Complex animations just got easier.
+            </p>
+            <pre class="fragment"><code class="hljs" data-trim>
 animations: [
   trigger('animateIn', [
     query(':enter', [
@@ -236,17 +267,19 @@ animations: [
     ], {optional: true})
   ])
 ]
-          </code></pre>
+            </code></pre>
+          </div>
 				</section>
 				<section>
           <h2>Conditional animation</h2>
-          <p>
-            Drive animation logic from component variables by defining state as a component property to conditionally animate.
-          </p>
-					<pre class="fragment"><code class="hljs" data-trim>
+          <div class="text-content">
+            <p>
+              Drive animation logic from component variables by defining state as a component property to conditionally animate.
+            </p>
+					  <pre class="fragment"><code class="hljs" data-trim>
 &lt;li *ngFor="let hero of heroes" [@animateIn]="animateState"&gt;&lt;/li&gt;
-					</code></pre>
-					<pre class="fragment"><code class="hljs" data-trim data-line-numbers="2-3,7">
+            </code></pre>
+            <pre class="fragment"><code class="hljs" data-trim data-line-numbers="2-3,7">
 animations: [
   trigger('animateIn', [
     transition('* =&gt; heroes-group', [
@@ -263,14 +296,16 @@ animations: [
     ])
   ])
 ]
-					</code></pre>
+            </code></pre>
+          </div>
 				</section>
 				<section>
-					<h2>Watching for animation events</h2>
-					<p>
-            React to events using the built in Animation callbacks. Watch for animation started and completed events by using <code>start</code> and <code>done</code> properties.
-          </p>
-					<pre class="fragment"><code class="hljs" data-trim data-line-numbers="1-2">
+          <h2>Watching for animation events</h2>
+          <div class="text-content">
+            <p>
+              React to events using the built in Animation callbacks. Watch for animation started and completed events by using <code>start</code> and <code>done</code> properties.
+            </p>
+            <pre class="fragment"><code class="hljs" data-trim data-line-numbers="1-2">
 &lt;ul class="heroes" *ngIf="heroes" [@animateIn]
   (@animateIn.done)="animationComplete($event)"&gt;
   &lt;li *ngFor="let hero of heroes"&gt;
@@ -279,13 +314,16 @@ animations: [
     &lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-          </code></pre>
+            </code></pre>
+          </div>
         </section>
         <section>
           <h2>Route transition animations</h2>
-          <p class="fragment">Hooks in to the router to have animation between views of a route change</p>
-          <p class="fragment">Define animations for nested routes as well</p>
-          <p class="fragment">Extra fancy</p>
+          <div class="text-content">
+            <p class="fragment">Hooks in to the router to have animation between views of a route change</p>
+            <p class="fragment">Define animations for nested routes as well</p>
+            <p class="fragment">Extra fancy</p>
+          </div>
         </section>
         <section data-background-iframe="https://alisaduncan.github.io/toh-animations/dashboard" data-background-interactive>
 					<div class="iframe-caption">
@@ -338,8 +376,10 @@ public prepareRoute(outlet: RouterOutlet) {
         </section>
         <section>
           <h2>Animate route sequences</h2>
-          <p class="fragment">Helpful if you have more than two route states</p>
-          <p class="fragment">Applicable to navigation lists </p>
+          <div class="text-content">
+            <p class="fragment">Helpful if you have more than two route states</p>
+            <p class="fragment">Applicable to navigation lists </p>
+          </div>
         </section>
         <section data-state="code-snippet" data-code-snippet-name="route-sequence">
           <h2>Animating route sequences</h2>
@@ -375,10 +415,12 @@ animations: [
         </section>
         <section>
           <h2>Reusing animations</h2>
-          <p class="fragment">Animations can be defined separately from component</p>
-          <p class="fragment">Reuse animations across multiple components</p>
-          <p class="fragment">Keep code modular</p>
-          <p class="fragment">Clean up component file</p>
+          <div class="text-content">
+            <p class="fragment">Animations can be defined separately from component</p>
+            <p class="fragment">Reuse animations across multiple components</p>
+            <p class="fragment">Keep code modular</p>
+            <p class="fragment">Clean up component file</p>
+          </div>
         </section>
 				<section data-state="code-snippet" data-code-snippet-name="reusable">
 					<h2>Make it reusable</h2>
@@ -421,13 +463,17 @@ animations: [
 				</section>
 				<section>
 					<h2>Testing tip</h2>
-          <p>Prevent animations from triggering while component DOM testing by importing the <code>NoopAnimationsModule</code> in the <code>TestBed</code>.</p>
-          <p>Happy testing!</p>
+          <div class="text-content">
+            <p class="fragment">Prevent animations from triggering while component DOM testing by importing the <code>NoopAnimationsModule</code> in the <code>TestBed</code>.</p>
+            <p class="fragment">Happy testing!</p>
+          </div>
 				</section>
 				<section>
           <h2>Want to learn more?</h2>
-            <p>Slides available at <a href="https://alisaduncan.github.io/animations-presentation/" target="_blank">alisaduncan.github.io/animations-presentation</a></p>
-					  <p>Animated Tour of Heroes App <a href="https://github.com/alisaduncan/toh-animations" target="_blank">https://github.com/alisaduncan/toh-animations</a></p>
+          <div class="text-content">
+            <p>Slides <a href="https://alisaduncan.github.io/animations-presentation/" target="_blank">alisaduncan.github.io/animations-presentation</a></p>
+            <p>Animated Tour of Heroes App <a href="https://github.com/alisaduncan/toh-animations" target="_blank">https://github.com/alisaduncan/toh-animations</a></p>
+          </div>
 				</section>
 			</div>
     </div>
