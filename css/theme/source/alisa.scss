@@ -9,7 +9,7 @@
 // Include theme-specific fonts
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
-
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 // Override theme settings (see ../template/settings.scss)
 $backgroundColor: #fbfbfb;
@@ -18,8 +18,10 @@ $mainColor: #333;
 $headingFont: 'Quicksand', sans-serif;
 $headingColor: #204969;
 // $headingColor: #756c83;
-$headingLetterSpacing: -0.1em;
+$headingLetterSpacing: -0.05em;
 $headingTextShadow: none;
+
+$codeFont: 'Roboto Mono', monospace;
 $linkColor: #3b759e;
 $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: #134674;
@@ -35,34 +37,79 @@ $heading4Size: 1.0em;
 }
 
 .reveal .slides section.present {
-	flex-direction: column;
-  align-items: center;
+  flex-direction: column;
+  height: 80%;
 
-  justify-content: flex-start;
+  & > h2 {
+    flex: 20%;
+  }
+
+  & > div.text-content {
+    flex: 80%;
+  }
 }
 
-.reveal pre code.hide {
-    display: none;
+.reveal .slides section.present.title {
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.reveal .slides section.present.presenter {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+
+  & > .heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > img {
+      border-radius: 50%;
+      margin: 0 0.5em;
+      width: 12%;
+    }
+  }
+
+  & > .about {
+    font-size: 80%;
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 45%;
+    }
+  }
 }
 
 section .multi-column {
- display: flex;
- flex-direction: row;
- align-items: flex-start;
- justify-content: space-evenly;
+  flex: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
 
- &.instructions {
-   & > .step {
-    text-align: left;
-    flex: 33%;
-    align-items: start;
-    font-size: 80%;
-   }
+  &.instructions {
+    & > .step {
+      text-align: left;
+      flex: 33%;
+      align-items: start;
+      font-size: 80%;
+    }
 
-   & > .output {
-     flex: 67%;
-   }
- }
+    & > .output {
+      flex: 67%;
+    }
+  }
+}
+
+.reveal pre code.hide {
+  display: none;
 }
 
 .iframe-caption {
@@ -78,12 +125,19 @@ section .multi-column {
   text-align: left;
 }
 
+// .reveal p code {
+//   display: inline-block;
+//   border-radius: 7px;
+// }
 
 // Background generator
 // @mixin bodyBackground() {
 // 	@include radial-gradient( #b9e1dc, #fbfbfb );
 // }
 
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}
 
 
 // Theme template ------------------------------
