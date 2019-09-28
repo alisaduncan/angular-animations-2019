@@ -2,7 +2,21 @@
 <html>
 	<head>
     <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Angular has built in support for animations. We'll apply simple animations to components and router to see how it works.">
+		<meta name="keywords" content="Alisa Duncan, women in tech, AngularKC, ngGirlsKC">
+		<meta property="og:title" content="Digging in to Angular Animations">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="http://alisaduncan.github.io/animations-presentation/img/cover.png">
+		<meta property="og:url" content="http://alisaduncan.github.io/animations-presentation">
+		<meta property="og:description" content="Angular has built in support for animations. We'll apply simple animations to components and router to see how it works.">
+		<meta property="twitter:card" content="twitter:card">
+		<meta property="twitter:title" content="Digging in to Angular Animations">
+		<meta property="twitter:creator" content="@AlisaDuncan">
+		<meta property="twitter:image" content="http://alisaduncan.github.io/animations-presentation/img/cover.png">
+		<meta property="twitter:url" content="http://alisaduncan.github.io/animations-presentation">
+		<meta property="twitter:description" content="Angular has built in support for animations. We'll apply simple animations to components and router to see how it works.">
+
 
 		<title>Digging in to Angular Animations</title>
 
@@ -386,7 +400,7 @@ animations: [
 ]
                   </code></pre>
                   <pre><code class="hljs" data-code-snippet="route-animations-3">
-&lt;div [@routeAnimation]="preparedRoute(outlet)"&gt;
+&lt;div [@routeAnimation]="prepareRoute(outlet)"&gt;
   &lt;router-outlet #outlet="outlet"&gt;&lt;/router-outlet&gt;
 &lt;/div&gt;
                   </code></pre>
