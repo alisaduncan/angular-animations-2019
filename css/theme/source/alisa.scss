@@ -9,20 +9,20 @@
 // Include theme-specific fonts
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400&display=swap');
 
 // Override theme settings (see ../template/settings.scss)
 $backgroundColor: #fbfbfb;
 $mainFont: 'Open Sans', sans-serif;
-$mainColor: #333;
+$mainColor: #484848;// #333;
 $headingFont: 'Quicksand', sans-serif;
-$headingColor: #204969;
+$headingColor: #48466d; //#204969;
 // $headingColor: #756c83;
 $headingLetterSpacing: -0.05em;
 $headingTextShadow: none;
 
 $codeFont: 'Roboto Mono', monospace;
-$linkColor: #3b759e;
+$linkColor: #f38181;// #3b759e;
 $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: #134674;
 
@@ -41,11 +41,11 @@ $heading4Size: 1.0em;
   height: 80%;
 
   & > h2 {
-    flex: 20%;
+    flex: 25%;
   }
 
   & > div.text-content {
-    flex: 80%;
+    flex: 75%;
   }
 }
 
@@ -75,15 +75,16 @@ $heading4Size: 1.0em;
   & > .about {
     font-size: 80%;
   }
+}
 
-  .social {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.reveal .slides section.present.section-title {
+  height: 80%;
+  justify-content: center;
+  align-items: center;
 
-    img {
-      width: 45%;
-    }
+  h2 {
+    color: #fbfbfb;
+    flex: none;
   }
 }
 
@@ -106,10 +107,31 @@ section .multi-column {
       flex: 67%;
     }
   }
+
+  &.image-right {
+    & > .content {
+      flex: 67%;
+    }
+
+    & > .image {
+      flex: 33%;
+      align-self: center;
+    }
+  }
+}
+
+.reveal pre code {
+  border-radius: 8px;
 }
 
 .reveal pre code.hide {
   display: none;
+}
+
+.reveal p code {
+  letter-spacing: -0.08em;
+  font-weight: 400;
+  color: #333;
 }
 
 .iframe-caption {
@@ -118,28 +140,48 @@ section .multi-column {
   right: 0;
   top: 300px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2);
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(117,108, 131, 0.85);
   color: #fff;
   padding: 20px;
   font-size: 20px;
   text-align: left;
 }
 
-// .reveal p code {
-//   display: inline-block;
-//   border-radius: 7px;
-// }
 
-// Background generator
-// @mixin bodyBackground() {
-// 	@include radial-gradient( #b9e1dc, #fbfbfb );
-// }
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 45%;
+  }
+}
+
+.title-overlay {
+	position: absolute;
+	bottom: 3%;
+	left: 3%;
+	width: 50%;
+	span {
+		font-family: 'Quicksand', sans-serif;
+		color: #444f5a;
+		margin-right: 2%;
+	}
+}
+
+div.reveal.has-dark-background + div.title-overlay {
+  span {
+    color: #b9e1dc;
+  }
+}
 
 @mixin bodyBackground() {
 	background: $backgroundColor;
 }
 
-
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+

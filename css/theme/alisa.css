@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400&display=swap");
 .reveal a {
   line-height: 1.3em; }
 
@@ -8,9 +8,9 @@
   flex-direction: column;
   height: 80%; }
   .reveal .slides section.present > h2 {
-    flex: 20%; }
+    flex: 25%; }
   .reveal .slides section.present > div.text-content {
-    flex: 80%; }
+    flex: 75%; }
 
 .reveal .slides section.present.title {
   height: 100%;
@@ -31,12 +31,14 @@
       width: 12%; }
   .reveal .slides section.present.presenter > .about {
     font-size: 80%; }
-  .reveal .slides section.present.presenter .social {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .reveal .slides section.present.presenter .social img {
-      width: 45%; }
+
+.reveal .slides section.present.section-title {
+  height: 80%;
+  justify-content: center;
+  align-items: center; }
+  .reveal .slides section.present.section-title h2 {
+    color: #fbfbfb;
+    flex: none; }
 
 section .multi-column {
   flex: 90%;
@@ -51,9 +53,22 @@ section .multi-column {
     font-size: 80%; }
   section .multi-column.instructions > .output {
     flex: 67%; }
+  section .multi-column.image-right > .content {
+    flex: 67%; }
+  section .multi-column.image-right > .image {
+    flex: 33%;
+    align-self: center; }
+
+.reveal pre code {
+  border-radius: 8px; }
 
 .reveal pre code.hide {
   display: none; }
+
+.reveal p code {
+  letter-spacing: -0.08em;
+  font-weight: 400;
+  color: #333; }
 
 .iframe-caption {
   position: absolute;
@@ -61,11 +76,31 @@ section .multi-column {
   right: 0;
   top: 300px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), 0 5px 25px rgba(0, 0, 0, 0.2);
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(117, 108, 131, 0.85);
   color: #fff;
   padding: 20px;
   font-size: 20px;
   text-align: left; }
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .social img {
+    width: 45%; }
+
+.title-overlay {
+  position: absolute;
+  bottom: 3%;
+  left: 3%;
+  width: 50%; }
+  .title-overlay span {
+    font-family: 'Quicksand', sans-serif;
+    color: #444f5a;
+    margin-right: 2%; }
+
+div.reveal.has-dark-background + div.title-overlay span {
+  color: #b9e1dc; }
 
 /*********************************************
  * GLOBAL STYLES
@@ -78,7 +113,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 40px;
   font-weight: normal;
-  color: #333; }
+  color: #484848; }
 
 ::selection {
   color: #fff;
@@ -105,7 +140,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #204969;
+  color: #48466d;
   font-family: "Quicksand", sans-serif;
   font-weight: normal;
   line-height: 1.2;
@@ -269,20 +304,20 @@ body {
  * LINKS
  *********************************************/
 .reveal a {
-  color: #3b759e;
+  color: #f38181;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #74a7cb;
+  color: #fcdede;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #264c66; }
+  background: #ec3b3b; }
 
 /*********************************************
  * IMAGES
@@ -290,7 +325,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #333;
+  border: 4px solid #484848;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal section img.plain {
@@ -304,21 +339,21 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #3b759e;
+  border-color: #f38181;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls {
-  color: #3b759e; }
+  color: #f38181; }
 
 /*********************************************
  * PROGRESS BAR
  *********************************************/
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
-  color: #3b759e; }
+  color: #f38181; }
 
 .reveal .progress span {
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
