@@ -7,14 +7,14 @@
 		<meta name="keywords" content="Alisa Duncan, women in tech, AngularKC, ngGirlsKC">
 		<meta property="og:title" content="Digging in to Angular Animations">
 		<meta property="og:type" content="website">
-		<meta property="og:image" content="http://alisaduncan.github.io/animations-presentation/img/cover.png">
-		<meta property="og:url" content="http://alisaduncan.github.io/animations-presentation">
+		<meta property="og:image" content="http://alisaduncan.github.io/angular-animations/img/cover.png">
+		<meta property="og:url" content="http://alisaduncan.github.io/angular-animations">
 		<meta property="og:description" content="Angular has built in support for animations. We'll apply simple animations to components and router to see how it works.">
 		<meta property="twitter:card" content="twitter:card">
 		<meta property="twitter:title" content="Digging in to Angular Animations">
 		<meta property="twitter:creator" content="@AlisaDuncan">
-		<meta property="twitter:image" content="http://alisaduncan.github.io/animations-presentation/img/cover.png">
-		<meta property="twitter:url" content="http://alisaduncan.github.io/animations-presentation">
+		<meta property="twitter:image" content="http://alisaduncan.github.io/angular-animations/img/cover.png">
+		<meta property="twitter:url" content="http://alisaduncan.github.io/angular-animations">
 		<meta property="twitter:description" content="Angular has built in support for animations. We'll apply simple animations to components and router to see how it works.">
 
 
@@ -175,7 +175,7 @@ export class AppModule { }
         <section class="section-title" data-background="#756c83">
             <h2>Trigger a style change based on state</h2>
         </section>
-				<section data-background-iframe="https://alisaduncan.github.io/toh-animations/dashboard" data-background-interactive>
+				<section data-background-iframe="https://alisaduncan.github.io/angular-animations-code/dashboard" data-background-interactive>
 					<div class="iframe-caption">
 						<h2>Triggering styles changes on state</h2>
 						<p>The background color of the <strong>clear</strong> button for the Messages output at the bottom of the view changes based on state.</p>
@@ -214,7 +214,7 @@ animations: [
         <section class="section-title" data-background="#756c83">
             <h2>Animate a transition between states</h2>
         </section>
-				<section data-background-iframe="https://alisaduncan.github.io/toh-animations/heroes-group" data-background-interactive>
+				<section data-background-iframe="https://alisaduncan.github.io/angular-animations-code/heroes-group" data-background-interactive>
 					<div class="iframe-caption">
 						<h2>Transitions and timings</h2>
 						<p>Animate elements entering the view by defining animations to fire based on transitions between states.</p>
@@ -275,7 +275,7 @@ animations: [
         <section class="section-title" data-background="#756c83">
             <h2>How about a fancier example?</h2>
         </section>
-				<section data-background-iframe="https://alisaduncan.github.io/toh-animations/heroes-stagger" data-background-interactive>
+				<section data-background-iframe="https://alisaduncan.github.io/angular-animations-code/heroes-stagger" data-background-interactive>
 					<div class="iframe-caption">
 						<h2>Stagger animation of each list item</h2>
 						<p>Angular supports complex animation of child elements natively. Here we change the animation of list to stagger on each list item.</p>
@@ -364,10 +364,10 @@ animations: [
             </div>
           </div>
         </section>
-        <section data-background-iframe="https://alisaduncan.github.io/toh-animations/dashboard" data-background-interactive>
+        <section data-background-iframe="https://alisaduncan.github.io/angular-animations-code/dashboard" data-background-interactive>
 					<div class="iframe-caption">
 						<h2>Route animations</h2>
-						<p>Animations can be applied to routes as well to create a smooth transition between the different pages.</p>
+						<p>Animations can be applied to routes to create a smooth transition between the different pages. Here we'll toggle between dashboard and Heroes-Group.</p>
 					</div>
 				</section>
 				<section data-state="code-snippet" data-code-snippet-name="route-animations">
@@ -420,6 +420,12 @@ public prepareRoute(outlet: RouterOutlet) {
             <p class="fragment">Applicable to navigation lists </p>
           </div>
         </section>
+        <section data-background-iframe="https://alisaduncan.github.io/angular-animations-code/dashboard" data-background-interactive>
+					<div class="iframe-caption">
+						<h2>Animating route sequences</h2>
+						<p>Here we'll navigate between three routes.</p>
+					</div>
+				</section>
         <section data-state="code-snippet" data-code-snippet-name="route-sequence">
           <h2>Animating route sequences</h2>
           <div class="multi-column instructions">
@@ -520,9 +526,9 @@ animations: [
 				<section data-background="#b9e1dc">
           <h2>Want to learn more?</h2>
           <div class="text-content">
-            <p>Slides <a href="https://alisaduncan.github.io/animations-presentation/" target="_blank">alisaduncan.github.io/animations-presentation</a></p>
-            <p>Animated Tour of Heroes App <a href="https://github.com/alisaduncan/toh-animations" target="_blank">https://github.com/alisaduncan/toh-animations</a></p>
-            <p>Animation docs on <a href="https://angular.io/guide/animations">Angular.io</a></p>
+            <p>Slides <a href="https://alisaduncan.github.io/angular-animations/" target="_blank">alisaduncan.github.io/angular-animations</a></p>
+            <p>Animated Tour of Heroes App <a href="https://github.com/alisaduncan/angular-animations-code" target="_blank">https://github.com/alisaduncan/angular-animations-code</a></p>
+            <p>Animation docs on <a href="https://angular.io/guide/animations">angular.io</a></p>
           </div>
           <div class="contact">
               <h4>@AlisaDuncan</h4>
@@ -540,7 +546,7 @@ animations: [
         <span>@AlisaDuncan</span> <span>Digging in to Angular Animations</span>
     </div>
 
-    <script src="js/reveal.min.js"></script>
+    <script src="js/reveal.js"></script>
     <script src="js/alisa.js"></script>
 
 		<script>

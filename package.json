@@ -1,9 +1,8 @@
 {
-  "name": "reveal.js",
-  "version": "3.8.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
+  "name": "angular-animations",
+  "version": "0.0.0",
+  "description": "Digging in to Angular Animations",
+  "homepage": "https://alisaduncan.github.io/angular-animations/",
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
@@ -11,13 +10,11 @@
     "build": "grunt"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Alisa Duncan"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/alisaduncan/angular-animations.git"
   },
   "engines": {
     "node": ">=9.0.0"
