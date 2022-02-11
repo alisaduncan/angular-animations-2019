@@ -3,11 +3,11 @@
 ![](img/cover.png)
 
 
-Slides [alisaduncan.github.io/angular-animations/](https://alisaduncan.github.io/angular-animations/)
+Slides [alisaduncan.github.io/angular-animations-2019/](https://alisaduncan.github.io/angular-animations-2019/)
 
-Animated Tour of Heroes [alisaduncan.github.io/angular-animations-code/](https://alisaduncan.github.io/angular-animations-code/)
+Animated Tour of Heroes [alisaduncan.github.io/angular-animations-code-2019/](https://alisaduncan.github.io/angular-animations-code-2019/)
 
-Code Samples found in [https://github.com/alisaduncan/angular-animations-code](https://github.com/alisaduncan/angular-animations-code)
+Code Samples found in [https://github.com/alisaduncan/angular-animations-code-2019](https://github.com/alisaduncan/angular-animations-code-2019)
 
 Presentation for Angular Animations built with [revealjs](http://revealjs.com/).
 
